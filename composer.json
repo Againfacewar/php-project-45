@@ -1,0 +1,19 @@
+{
+    "name": "hexlet/code",
+    "description": "My first project on Hexlet",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Hexlet\\Code\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Ucsus",
+            "email": "ucsus@exbo.ru"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
