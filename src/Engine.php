@@ -1,20 +1,31 @@
 <?php
 
-namespace Hexlet\Code\BrainGames\BrainEventHandler;
+namespace Hexlet\Code\Engine;
 
 use function cli\line;
 use function cli\prompt;
 
-function handler(): void
+function handler(string $game)
 {
+    $gameHandlerPath = __DIR__ . "/Games/{$game}.php";
+
+    if (file_exists($gameHandlerPath)) {
+        require_once $gameHandlerPath;
+    } else {
+        line('Файл-обработчик для данной игры не найден');
+        return;
+    }
+
     $name = welcome();
 
     $correctAnswerCount = 0;
     while ($correctAnswerCount < 3) {
-        $randomNum = rand(1, 100);
-        line("Question: {$randomNum}");
+        $getQuestion = "\\Hexlet\\Code\\Games\\" . $game . "\\getQuestion";
+        $question = $getQuestion();
+        line("Question: {$question}");
         $answer = prompt("Your answer");
-        $correctAnswer = resolveQuestion($randomNum);
+        $resolveQuestion = "\\Hexlet\\Code\\Games\\" . $game . "\\resolveQuestion";
+        $correctAnswer = $resolveQuestion($question);
 
         if ($answer === $correctAnswer) {
             $msg = $correctAnswerCount === 2 ? "Correct!\nCongratulations, {$name}!" : 'Correct!';
@@ -28,10 +39,6 @@ function handler(): void
     }
 }
 
-function resolveQuestion(int $num): string
-{
-    return $num % 2 === 0 ? 'yes' : 'no';
-}
 
 function welcome(): string
 {
