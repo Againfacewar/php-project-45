@@ -10,6 +10,7 @@
         "files": [
             "src/Cli.php",
             "src/Games/BrainEven.php",
+            "src/Games/BrainCalc.php",
             "src/Engine.php"
         ]
     },

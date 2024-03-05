@@ -5,29 +5,16 @@ namespace Hexlet\Code\Engine;
 use function cli\line;
 use function cli\prompt;
 
-function handler(string $game)
+function main(string $gameDescription, callable $getQuestionWithAnswer): void
 {
-    $gameHandlerPath = __DIR__ . "/Games/{$game}.php";
-
-    if (file_exists($gameHandlerPath)) {
-        require_once $gameHandlerPath;
-    } else {
-        line('Файл-обработчик для данной игры не найден');
-        return;
-    }
-
-    $name = welcome();
+    $name = welcome($gameDescription);
 
     $correctAnswerCount = 0;
     while ($correctAnswerCount < 3) {
-        $getQuestion = "\\Hexlet\\Code\\Games\\" . $game . "\\getQuestion";
-        $question = $getQuestion();
+        [$question, $correctAnswer] = $getQuestionWithAnswer();
         line("Question: {$question}");
         $answer = prompt("Your answer");
-        $resolveQuestion = "\\Hexlet\\Code\\Games\\" . $game . "\\resolveQuestion";
-        $correctAnswer = $resolveQuestion($question);
-
-        if ($answer === $correctAnswer) {
+        if ($answer === "$correctAnswer") {
             $msg = $correctAnswerCount === 2 ? "Correct!\nCongratulations, {$name}!" : 'Correct!';
             line($msg);
             $correctAnswerCount++;
@@ -40,13 +27,13 @@ function handler(string $game)
 }
 
 
-function welcome(): string
+function welcome(string $gameDescription): string
 {
     line('Welcome to the Brain Game!');
     $name = prompt('May I have your name?');
     $ucFirstName = ucfirst($name);
     line("Hello, %s!", $ucFirstName);
-    line('Answer "yes" if the number is even, otherwise answer "no".');
+    line($gameDescription);
 
     return $ucFirstName;
 }

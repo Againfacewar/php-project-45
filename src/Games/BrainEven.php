@@ -2,15 +2,18 @@
 
 namespace Hexlet\Code\Games\BrainEven;
 
-use function cli\line;
-use function cli\prompt;
+use function Hexlet\Code\Engine\main;
 
-function resolveQuestion(int $num): string
+const GAME_DESCRIPTION = 'Answer "yes" if the number is even, otherwise answer "no".';
+function handler(): void
 {
-    return $num % 2 === 0 ? 'yes' : 'no';
+    $getQuestionWithAnswer = function (): array {
+        $num = rand(1, 100);
+        $correctAnswer = $num % 2 === 0 ? 'yes' : 'no';
+
+        return [$num, $correctAnswer];
+    };
+    main(GAME_DESCRIPTION, $getQuestionWithAnswer);
 }
 
-function getQuestion(): int
-{
-    return rand(1, 100);
-}
+
