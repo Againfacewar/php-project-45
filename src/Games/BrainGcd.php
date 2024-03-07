@@ -12,14 +12,14 @@ function handler(): void
         $randomNums = [rand(1, 100), rand(1, 100)];
 
         return [
-            numbersToString($randomNums[0], $randomNums[1]),
+            questionPreparing($randomNums[0], $randomNums[1]),
             findGcd($randomNums)
         ];
     };
     main(GAME_DESCRIPTION, $getQuestionWithAnswer, TOTAL_ROUNDS);
 }
 
-function numbersToString(int $num1, int $num2): string
+function questionPreparing(int $num1, int $num2): string
 {
     return "$num1 $num2";
 }

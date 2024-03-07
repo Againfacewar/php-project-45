@@ -16,14 +16,14 @@ function handler(): void
         $randomOperator = $operatorsArray[array_rand($operatorsArray)];
 
         return [
-            expressionToString($randomNum1, $randomNum2, $randomOperator),
+            questionPreparing($randomNum1, $randomNum2, $randomOperator),
             resolveExpression($randomNum1, $randomNum2, $randomOperator)
         ];
     };
     main(GAME_DESCRIPTION, $getQuestionWithAnswer, TOTAL_ROUNDS);
 }
 
-function expressionToString(int $num1, int $num2, string $operator): string
+function questionPreparing(int $num1, int $num2, string $operator): string
 {
     return "$num1 $operator $num2";
 }
