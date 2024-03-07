@@ -16,9 +16,6 @@ brain-gcd:
 brain-progression:
 	./bin/brain-progression
 
-list:
-	./bin/game-list
-
 brain-prime:
 	./bin/brain-prime
 
