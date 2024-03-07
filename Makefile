@@ -10,6 +10,9 @@ brain-even:
 brain-calc:
 	./bin/brain-calc
 
+brain-gcd:
+	./bin/brain-gcd
+
 validate:
 	composer validate
 
@@ -18,3 +21,6 @@ autoload:
 
 lint:
 	composer exec --verbose phpcs -- --standard=PSR12 src bin
+
+fix-lint:
+	composer exec --verbose phpcbf -- --standard=PSR12 src bin

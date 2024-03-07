@@ -5,17 +5,17 @@ namespace Hexlet\Code\Engine;
 use function cli\line;
 use function cli\prompt;
 
-function main(string $gameDescription, callable $getQuestionWithAnswer): void
+function main(string $gameDescription, callable $getQuestionWithAnswer, int $totalRounds): void
 {
     $name = welcome($gameDescription);
 
     $correctAnswerCount = 0;
-    while ($correctAnswerCount < 3) {
+    while ($correctAnswerCount < $totalRounds) {
         [$question, $correctAnswer] = $getQuestionWithAnswer();
         line("Question: {$question}");
         $answer = prompt("Your answer");
         if ($answer === "$correctAnswer") {
-            $msg = $correctAnswerCount === 2 ? "Correct!\nCongratulations, {$name}!" : 'Correct!';
+            $msg = $correctAnswerCount === $totalRounds - 1 ? "Correct!\nCongratulations, {$name}!" : 'Correct!';
             line($msg);
             $correctAnswerCount++;
         } else {

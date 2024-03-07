@@ -5,6 +5,7 @@ namespace Hexlet\Code\Games\BrainCalc;
 use function Hexlet\Code\Engine\main;
 
 const GAME_DESCRIPTION = 'What is the result of the expression?';
+const TOTAL_ROUNDS = 3;
 function handler(): void
 {
     $getQuestionWithAnswer = function (): array {
@@ -19,7 +20,7 @@ function handler(): void
             resolveExpression($randomNum1, $randomNum2, $randomOperator)
         ];
     };
-    main(GAME_DESCRIPTION, $getQuestionWithAnswer);
+    main(GAME_DESCRIPTION, $getQuestionWithAnswer, TOTAL_ROUNDS);
 }
 
 function expressionToString(int $num1, int $num2, string $operator): string
