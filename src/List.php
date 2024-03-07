@@ -9,12 +9,12 @@ function getGamesList(): void
     $binDirectory = __DIR__ . '/../bin';
 
     if (is_dir($binDirectory)) {
-        $directoriesArray = array_diff(scandir($binDirectory), array('..', '.', 'game-list'));
-        $mappedDirectoriesArray = array_map(function ($value) {
+        $directories = scandir($binDirectory);
+        $mappedDirectories = array_map(function ($value) {
             return "make $value";
-        }, $directoriesArray);
+        }, array_diff($directories, array('..', '.', 'game-list')));
         $table = new Table();
-        $table->setHeaders($mappedDirectoriesArray);
+        $table->setHeaders($mappedDirectories);
         $table->display();
     }
 }
