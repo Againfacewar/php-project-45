@@ -6,3 +6,18 @@
 ### [Brain-Gcd](https://asciinema.org/a/aXXW4FdQOfu6NrlRpl8THTAsv)
 ### [Brain-Progression](https://asciinema.org/a/rKTHA2WO63N6XjBDKtlsR8XCT)
 ### [Brain-Prime](https://asciinema.org/a/5OcrigpjZTSsL8EGy8KU63eWV)
+## Installation
+
+```
+git clone https://github.com/Againfacewar/php-project-45.git
+make install
+```
+
+## Getting Started
+
+```
+# view the list of games
+make list
+# run the game
+make game-name
+```

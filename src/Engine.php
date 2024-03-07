@@ -12,15 +12,17 @@ function main(string $gameDescription, callable $getQuestionWithAnswer, int $tot
     $correctAnswerCount = 0;
     while ($correctAnswerCount < $totalRounds) {
         [$question, $correctAnswer] = $getQuestionWithAnswer();
-        line("Question: {$question}");
+        line("Question: %s", $question);
         $answer = prompt("Your answer");
         if ($answer === "$correctAnswer") {
-            $msg = $correctAnswerCount === $totalRounds - 1 ? "Correct!\nCongratulations, {$name}!" : 'Correct!';
-            line($msg);
+            line("Correct!");
+            if ($correctAnswerCount === $totalRounds - 1) {
+                line("Congratulations, %s!", $name);
+            }
             $correctAnswerCount++;
         } else {
-            line("'$answer' is wrong answer ;(. Correct answer was '$correctAnswer'.");
-            line("Let's try again, {$name}!");
+            line("'%s' is wrong answer ;(. Correct answer was '%s'.", $answer, $correctAnswer);
+            line("Let's try again, %s!", $name);
             break;
         }
     }
