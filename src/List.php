@@ -10,10 +10,11 @@ function getGamesList(): void
 
     if (is_dir($binDirectory)) {
         $directoriesArray = array_map(function ($value) {
-            return "make $value";
+            return ["make $value"];
         }, array_diff((array) scandir($binDirectory), ['..', '.', 'game-list']));
         $table = new Table();
-        $table->setHeaders($directoriesArray);
+        $table->setHeaders(['The list of games']);
+        $table->setRows($directoriesArray);
         $table->display();
     }
 }
