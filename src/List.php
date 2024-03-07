@@ -10,9 +10,10 @@ function getGamesList(): void
 
     if (is_dir($binDirectory)) {
         $directories = scandir($binDirectory);
+        $notAllowDirectories = ['..', '.', 'game-list'];
         $mappedDirectories = array_map(function ($value) {
             return "make $value";
-        }, array_diff($directories, array('..', '.', 'game-list')));
+        }, array_diff($directories, $notAllowDirectories));
         $table = new Table();
         $table->setHeaders($mappedDirectories);
         $table->display();
