@@ -28,7 +28,7 @@ function questionPreparing(int $num1, int $num2, string $operator): string
     return "$num1 $operator $num2";
 }
 
-function resolveExpression(int $num1, int $num2, string $operator)
+function resolveExpression(int $num1, int $num2, string $operator): ?int
 {
     switch ($operator) {
         case '+':
