@@ -2,10 +2,11 @@
 
 namespace Hexlet\Code\Games\BrainPrime;
 
-use function Hexlet\Code\Engine\main;
+use function Hexlet\Code\Engine\play;
 
 const GAME_DESCRIPTION = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 const TOTAL_ROUNDS = 3;
+
 function handler(): void
 {
     $getQuestionWithAnswer = function (): array {
@@ -15,7 +16,7 @@ function handler(): void
             isPrime($randomNum) ? 'yes' : 'no'
         ];
     };
-    main(GAME_DESCRIPTION, $getQuestionWithAnswer, TOTAL_ROUNDS);
+    play(GAME_DESCRIPTION, $getQuestionWithAnswer, TOTAL_ROUNDS);
 }
 
 function isPrime(int $num): bool

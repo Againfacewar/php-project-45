@@ -2,10 +2,11 @@
 
 namespace Hexlet\Code\Games\BrainProgression;
 
-use function Hexlet\Code\Engine\main;
+use function Hexlet\Code\Engine\play;
 
 const GAME_DESCRIPTION = 'What number is missing in the progression?';
 const TOTAL_ROUNDS = 3;
+
 function handler(): void
 {
     $getQuestionWithAnswer = function (): array {
@@ -16,7 +17,7 @@ function handler(): void
             $correctAnswer
         ];
     };
-    main(GAME_DESCRIPTION, $getQuestionWithAnswer, TOTAL_ROUNDS);
+    play(GAME_DESCRIPTION, $getQuestionWithAnswer, TOTAL_ROUNDS);
 }
 
 function questionPreparing(array $progression): array

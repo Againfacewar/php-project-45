@@ -2,10 +2,11 @@
 
 namespace Hexlet\Code\Games\BrainGcd;
 
-use function Hexlet\Code\Engine\main;
+use function Hexlet\Code\Engine\play;
 
 const GAME_DESCRIPTION = 'Find the greatest common divisor of given numbers.';
 const TOTAL_ROUNDS = 3;
+
 function handler(): void
 {
     $getQuestionWithAnswer = function (): array {
@@ -16,7 +17,7 @@ function handler(): void
             findGcd($randomNums)
         ];
     };
-    main(GAME_DESCRIPTION, $getQuestionWithAnswer, TOTAL_ROUNDS);
+    play(GAME_DESCRIPTION, $getQuestionWithAnswer, TOTAL_ROUNDS);
 }
 
 function questionPreparing(int $num1, int $num2): string

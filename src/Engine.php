@@ -5,7 +5,7 @@ namespace Hexlet\Code\Engine;
 use function cli\line;
 use function cli\prompt;
 
-function main(string $gameDescription, callable $getQuestionWithAnswer, int $totalRounds): void
+function play(string $gameDescription, callable $getQuestionWithAnswer, int $totalRounds): void
 {
     $name = welcome($gameDescription);
 
@@ -27,7 +27,6 @@ function main(string $gameDescription, callable $getQuestionWithAnswer, int $tot
         }
     }
 }
-
 
 function welcome(string $gameDescription): string
 {
